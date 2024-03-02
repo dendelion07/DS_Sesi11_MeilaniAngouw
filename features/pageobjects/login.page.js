@@ -1,13 +1,6 @@
 const { $, expect } = require('@wdio/globals')
 const Page = require('./page');
 
-// const errorUser = (dynamicMessage) => $(`//h3[text()="${dynamicMessage}"]`) 
-
-//     // NOTE: elements collection
-//     get fieldUsername () { return $('#user-name'); }
-//     get fieldPassword () { return $('#password'); }
-//     get buttonLogin () { return $('#login-button'); }
-
 const element = {
     fieldUsername: $('#user-name'),
     fieldPassword: $('#password'),

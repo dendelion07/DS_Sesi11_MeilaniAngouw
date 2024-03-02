@@ -1,8 +1,6 @@
 const { $, expect } = require('@wdio/globals')
 const Page = require('./page');
 
-// get iconCart () { return $('.shopping_cart_link'); }
-// get ButtonaddToCartBackpack () { return $('#add-to-cart-sauce-labs-backpack'); }
 
 const element = {
     iconCart: $('.shopping_cart_link'),

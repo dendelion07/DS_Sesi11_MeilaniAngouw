@@ -23,16 +23,16 @@ Then(/^Meilani should see error "(.*)"$/, async (dynamicMessage) => {
 
 
 //homepage
-// Given(/^Meilani is on the home page$/, async () => {
-//     await HomePage.open()
-// })
+Given(/^Meilani is on the home page$/, async () => {
+    await HomePage.open()
+})
 
-// When(/^Meilani click add "(.*)" product to cart$/, async () => {
-//     await HomePage.ButtonaddToCartBackpack()
-// })
+When(/^Meilani click add "(.*)" product to cart$/, async () => {
+    await HomePage.addBackpackToCart()
+})
 
-// Then(/^"(.*)" product is added to cart$/, async () => {
-//     await HomePage.open()
-// })
+Then(/^"(.*)" product is added to cart$/, async () => {
+    await HomePage.open()
+})
     
 
