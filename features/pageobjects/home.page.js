@@ -1,17 +1,22 @@
 const { $, expect } = require('@wdio/globals')
 const Page = require('./page');
 
-class HomePage extends Page {
-    get iconCart () { return $('.shopping_cart_link'); }
-    get ButtonaddToCartBackpack () { return $('#add-to-cart-sauce-labs-backpack'); }
+// get iconCart () { return $('.shopping_cart_link'); }
+// get ButtonaddToCartBackpack () { return $('#add-to-cart-sauce-labs-backpack'); }
 
+const element = {
+    iconCart: $('.shopping_cart_link'),
+    ButtonaddToCartBackpack: $('#add-to-cart-sauce-labs-backpack')
+}
+
+class HomePage extends Page {
     async validateHomePage() {
         await expect(browser).toHaveUrlContaining('/inventory.html')
-        await expect(this.iconCart).toBeDisplayed()
+        await expect(element.iconCart).toBeDisplayed()
     }
     
     async addBackpackToCart() {
-        await this.ButtonaddToCartBackpack.click()
+        await element.ButtonaddToCartBackpack.click()
     }
 
     open () {

@@ -1,33 +1,38 @@
 const { $, expect } = require('@wdio/globals')
 const Page = require('./page');
 
-const errorUser = (dynamicMessage) => $(`//h3[text()="${dynamicMessage}"]`) 
+// const errorUser = (dynamicMessage) => $(`//h3[text()="${dynamicMessage}"]`) 
 
+//     // NOTE: elements collection
+//     get fieldUsername () { return $('#user-name'); }
+//     get fieldPassword () { return $('#password'); }
+//     get buttonLogin () { return $('#login-button'); }
 
-class LoginPage extends Page {
-    // NOTE: elements collection
-    get fieldUsername () { return $('#user-name'); }
-    get fieldPassword () { return $('#password'); }
-    get buttonLogin () { return $('#login-button'); }
+const element = {
+    fieldUsername: $('#user-name'),
+    fieldPassword: $('#password'),
+    buttonLogin: $('#login-button'),
+    errorUser: (dynamicMessage) => $(`//h3[text()="${dynamicMessage}"]`)
+}
     
-
+class LoginPage extends Page {
     async login (username) {
-        await this.fieldUsername.waitForDisplayed({ timeout: 2500 });
-        await this.fieldUsername.setValue(username);
-        await this.fieldPassword.setValue(process.env.PASSWORD_SAUCEDEMO);
-        await this.buttonLogin.click();
+        await element.fieldUsername.waitForDisplayed({ timeout: 2500 });
+        await element.fieldUsername.setValue(username);
+        await element.fieldPassword.setValue(process.env.PASSWORD_SAUCEDEMO);
+        await element.buttonLogin.click();
     }
 
     async validateUserError (dynamicMessage) {
-        await errorUser (dynamicMessage).waitForDisplayed({ timeout: 2500 });
-        await expect(errorUser(dynamicMessage)).toBeDisplayed()
+        await element.errorUser (dynamicMessage).waitForDisplayed({ timeout: 2500 });
+        await expect(element.errorUser(dynamicMessage)).toBeDisplayed()
     }
 
     async loginProblemUser () {
-        await this.fieldUsername.waitForDisplayed({ timeout: 2500 });
-        await this.fieldUsername.setValue(process.env.USERNAME_PROBLEM_USER);
-        await this.fieldPassword.setValue(process.env.PASSWORD_SAUCEDEMO);
-        await this.buttonLogin.click();
+        await element.fieldUsername.waitForDisplayed({ timeout: 2500 });
+        await element.fieldUsername.setValue(process.env.USERNAME_PROBLEM_USER);
+        await element.fieldPassword.setValue(process.env.PASSWORD_SAUCEDEMO);
+        await element.buttonLogin.click();
     }
 
     // async validateInvalidUser (dynamicMessage) {
